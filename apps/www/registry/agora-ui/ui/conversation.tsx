@@ -16,7 +16,7 @@ export interface ConversationProps
 }
 
 const ConversationContext = React.createContext<{
-  scrollRef: React.RefObject<HTMLDivElement>
+  scrollRef: React.RefObject<HTMLDivElement | null>
 } | null>(null)
 
 const useConversation = () => {
@@ -122,13 +122,13 @@ export interface ConversationEmptyStateProps
    * Title text
    * @default "No messages yet"
    */
-  title?: React.ReactNode
+  title?: string
 
   /**
    * Description text
    * @default "Start a conversation to see messages here"
    */
-  description?: React.ReactNode
+  description?: string
 }
 
 export const ConversationEmptyState = React.forwardRef<
@@ -177,7 +177,6 @@ export const ConversationScrollButton = React.forwardRef<
     <Button
       ref={ref}
       size="icon"
-      rounded
       className={cn(
         "absolute bottom-4 left-1/2 -translate-x-1/2 shadow-md",
         className

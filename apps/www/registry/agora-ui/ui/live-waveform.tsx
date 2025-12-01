@@ -110,7 +110,7 @@ export const LiveWaveform = ({
 
     const setupMicrophone = async () => {
       try {
-        const audioConstraints: MediaTrackAudioConstraints = {
+        const audioConstraints: MediaTrackConstraints = {
           echoCancellation: true,
           noiseSuppression: true,
           autoGainControl: true,

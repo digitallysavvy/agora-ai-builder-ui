@@ -1,156 +1,103 @@
 "use client"
 
-import { Mic, Copy, Trash2 } from "lucide-react"
+import { Copy, Mic, Trash2 } from "lucide-react"
 
 import { Button } from "@/registry/agora-ui/ui/button"
 
 export default function ButtonDemo() {
   return (
-    <div className="w-full max-w-4xl space-y-8">
-      {/* Variants */}
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <h3 className="text-foreground text-sm font-semibold">Variants</h3>
-          <p className="text-muted-foreground text-xs">
-            Three style variants for different use cases
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center gap-3">
-          <Button variant="default">Default</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="destructive">Destructive</Button>
-        </div>
-      </div>
+    <div className="w-full space-y-6">
+      {/* Demo */}
+      <div className="space-y-4 rounded-lg border p-4">
+        <p className="text-sm font-medium">Interactive Demo</p>
+        <div className="flex flex-col items-center justify-center gap-6">
+          {/* Variants */}
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Button variant="default">Default</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="destructive">Destructive</Button>
+          </div>
 
-      {/* With Icons */}
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <h3 className="text-foreground text-sm font-semibold">
-            With Icons
-          </h3>
-          <p className="text-muted-foreground text-xs">
-            Buttons can include icons alongside text
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center gap-3">
-          <Button variant="default">
-            <Mic className="size-4" />
-            Record
-          </Button>
-          <Button variant="secondary">
-            <Copy className="size-4" />
-            Copy
-          </Button>
-          <Button variant="destructive">
-            <Trash2 className="size-4" />
-            Delete
-          </Button>
-        </div>
-      </div>
+          {/* With Icons */}
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Button variant="default">
+              <Mic className="size-4" />
+              Record
+            </Button>
+            <Button variant="secondary">
+              <Copy className="size-4" />
+              Copy
+            </Button>
+            <Button variant="destructive">
+              <Trash2 className="size-4" />
+              Delete
+            </Button>
+          </div>
 
-      {/* Disabled State */}
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <h3 className="text-foreground text-sm font-semibold">
-            Disabled State
-          </h3>
-          <p className="text-muted-foreground text-xs">
-            Buttons can be disabled to prevent interaction
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center gap-3">
-          <Button disabled>Default Disabled</Button>
-          <Button variant="secondary" disabled>
-            Secondary Disabled
-          </Button>
-          <Button variant="destructive" disabled>
-            Destructive Disabled
-          </Button>
+          {/* With Label */}
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <Button label="Click me">Default</Button>
+            <Button variant="secondary" label="Submit form">
+              <Mic className="size-4" />
+              Submit
+            </Button>
+          </div>
+
+          {/* Disabled */}
+          <div className="flex items-center justify-center gap-4">
+            <Button disabled>Disabled</Button>
+          </div>
         </div>
       </div>
 
-      {/* With Label */}
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <h3 className="text-foreground text-sm font-semibold">
-            With Label
-          </h3>
-          <p className="text-muted-foreground text-xs">
-            Optional label prop below button text
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center gap-6">
-          <Button label="Click me">Default</Button>
-          <Button variant="secondary" label="Submit form">
-            <Mic className="size-4" />
-            Submit
-          </Button>
-        </div>
-      </div>
-
-      {/* Usage Reference */}
-      <div className="bg-accent/5 space-y-4 rounded-lg p-4">
-        <h3 className="text-foreground text-sm font-semibold">Usage</h3>
-        <pre className="bg-muted text-muted-foreground overflow-x-auto rounded p-3 text-xs">
-          {`import { Button } from "@/registry/agora-ui/ui/button"
-import { Mic } from "lucide-react"
-
-export function MyComponent() {
-  return (
-    <>
-      {/* Variant - default, secondary, destructive */}
-      <Button variant="default">Default</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="destructive">Delete</Button>
-
-      {/* With Icon */}
-      <Button>
-        <Mic className="size-4" />
-        Record
-      </Button>
-
-      {/* With Label */}
-      <Button label="Click to submit">Submit</Button>
-
-      {/* Disabled */}
-      <Button disabled>Disabled</Button>
-    </>
-  )
-}`}
-        </pre>
-      </div>
-
-      {/* Props Reference */}
+      {/* Props */}
       <div className="rounded-lg border p-4">
-        <h3 className="mb-3 text-sm font-semibold">Props Reference</h3>
+        <p className="mb-3 text-sm font-medium">Props</p>
         <div className="text-muted-foreground space-y-2 text-xs">
           <div>
-            <strong>variant:</strong> "default" | "secondary" | "destructive"
-            (default: "default")
+            <strong>variant?:</strong> &quot;default&quot; |
+            &quot;secondary&quot; | &quot;destructive&quot; - Visual style
+            (default: &quot;default&quot;)
           </div>
           <div>
-            <strong>size:</strong> "default" (default: "default")
+            <strong>size?:</strong> &quot;default&quot; - Button size (default:
+            &quot;default&quot;)
           </div>
           <div>
-            <strong>label:</strong> string - optional text displayed below button
-            (default: undefined)
+            <strong>disabled?:</strong> boolean - Disable button interaction
           </div>
           <div>
-            <strong>labelClassName:</strong> string - custom classes for label
-            (default: undefined)
+            <strong>asChild?:</strong> boolean - Render as child component using
+            Radix Slot
           </div>
           <div>
-            <strong>disabled:</strong> boolean - disables the button (default:
-            false)
+            <strong>label?:</strong> string - Optional text label displayed
+            below button
           </div>
           <div>
-            <strong>asChild:</strong> boolean - render as a different element
-            (requires Slot wrapper) (default: false)
+            <strong>labelClassName?:</strong> string - Custom classes for label
           </div>
           <div>
-            <strong>className:</strong> string - additional Tailwind classes for
-            overrides
+            <strong>className?:</strong> string - Additional CSS classes
           </div>
+          <div>
+            <strong>children:</strong> React.ReactNode - Button content (text,
+            icons, etc.)
+          </div>
+        </div>
+      </div>
+
+      {/* Features */}
+      <div className="rounded-lg border p-4">
+        <p className="mb-3 text-sm font-medium">Features</p>
+        <div className="text-muted-foreground space-y-1.5 text-xs">
+          <div>• 3 variants: default, secondary, destructive</div>
+          <div>• Icon support with automatic sizing</div>
+          <div>• Optional label displayed below button</div>
+          <div>• Hover and transition effects</div>
+          <div>• Disabled state with reduced opacity</div>
+          <div>• Polymorphic with asChild prop (Radix Slot)</div>
+          <div>• Aria-invalid support for form validation</div>
         </div>
       </div>
     </div>

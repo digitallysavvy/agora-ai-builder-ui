@@ -43,6 +43,51 @@ export default function MicSelectorDemo() {
           </p>
         )}
       </div>
+
+      {/* Props */}
+      <div className="rounded-lg border p-4">
+        <p className="mb-3 text-sm font-medium">Props</p>
+        <div className="text-muted-foreground space-y-2 text-xs">
+          <div>
+            <strong>value?:</strong> string - Currently selected device ID
+          </div>
+          <div>
+            <strong>onValueChange?:</strong> (deviceId: string) =&gt; void -
+            Callback when device selection changes
+          </div>
+          <div>
+            <strong>muted?:</strong> boolean - Mute state (controlled)
+          </div>
+          <div>
+            <strong>onMutedChange?:</strong> (muted: boolean) =&gt; void -
+            Callback when mute state changes
+          </div>
+          <div>
+            <strong>disabled?:</strong> boolean - Disable the selector
+          </div>
+          <div>
+            <strong>state?:</strong> MicButtonState - Visual state indicator
+            (idle, listening, processing, error)
+          </div>
+          <div>
+            <strong>className?:</strong> string - Additional CSS classes
+          </div>
+        </div>
+      </div>
+
+      {/* Features */}
+      <div className="rounded-lg border p-4">
+        <p className="mb-3 text-sm font-medium">Features</p>
+        <div className="text-muted-foreground space-y-1.5 text-xs">
+          <div>• Auto-detects audio input devices</div>
+          <div>• Live waveform preview using Web Audio API</div>
+          <div>• Mute/unmute toggle with visual indicator</div>
+          <div>• Dropdown device selector</div>
+          <div>• Permission handling with error states</div>
+          <div>• Auto-selects first available device</div>
+          <div>• Responsive design with Chip wrapper</div>
+        </div>
+      </div>
     </div>
   )
 }

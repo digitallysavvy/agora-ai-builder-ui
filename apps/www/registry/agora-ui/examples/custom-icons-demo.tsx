@@ -72,7 +72,7 @@ export default function CustomIconsDemo() {
             <PhoneReceiver className="size-4" />
             Contact
           </Button>
-          <Button size="icon" rounded>
+          <Button size="icon">
             <PhoneReceiver className="size-4" />
           </Button>
         </div>

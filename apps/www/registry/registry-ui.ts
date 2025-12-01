@@ -264,4 +264,52 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "audio-visualizer",
+    description:
+      "Real-time audio frequency visualizer with 9 bars and configurable gradient colors. Supports Agora audio tracks and MediaStream.",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/audio-visualizer.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "examples/audio-visualizer-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "mic-button-with-visualizer",
+    description:
+      "Microphone toggle button with integrated 5-bar audio visualizer. Requires Agora RTC context for publish/unpublish functionality.",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/mic-button-with-visualizer.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "examples/mic-button-with-visualizer-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "convo-text-stream",
+    description:
+      "Collapsible chat interface for displaying streaming conversation transcripts. Supports markdown rendering, auto-scrolling, and both RTC/RTM message sources.",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/convo-text-stream.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "examples/convo-text-stream-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

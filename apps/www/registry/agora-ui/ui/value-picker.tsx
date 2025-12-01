@@ -20,6 +20,7 @@ interface ValuePickerProps {
   disabled?: boolean
   open?: boolean
   onOpenChange?: (open: boolean) => void
+  maxHeight?: string
 }
 
 const ValuePicker = React.forwardRef<
@@ -36,10 +37,12 @@ const ValuePicker = React.forwardRef<
       disabled,
       open,
       onOpenChange,
+      maxHeight,
     },
     ref
   ) => {
     const selectedItem = items.find((i) => i.id === value)
+    const hasScroll = !!maxHeight
 
     return (
       <div className="flex flex-col gap-3">
@@ -84,10 +87,15 @@ const ValuePicker = React.forwardRef<
               position="popper"
               sideOffset={0}
             >
-              <SelectPrimitive.ScrollUpButton className="flex cursor-default items-center justify-center py-1">
-                <ChevronDown className="size-4 rotate-180" />
-              </SelectPrimitive.ScrollUpButton>
-              <SelectPrimitive.Viewport className="max-h-[150px] overflow-y-auto">
+              {hasScroll && (
+                <SelectPrimitive.ScrollUpButton className="flex cursor-default items-center justify-center py-1">
+                  <ChevronDown className="size-4 rotate-180" />
+                </SelectPrimitive.ScrollUpButton>
+              )}
+              <SelectPrimitive.Viewport
+                className={cn(hasScroll && "overflow-y-auto")}
+                style={hasScroll ? { maxHeight } : undefined}
+              >
                 {items.length === 0 ? (
                   <div className="text-muted-foreground py-6 text-center text-sm">
                     No items found.
@@ -116,9 +124,11 @@ const ValuePicker = React.forwardRef<
                   ))
                 )}
               </SelectPrimitive.Viewport>
-              <SelectPrimitive.ScrollDownButton className="flex cursor-default items-center justify-center py-1">
-                <ChevronDown className="size-4" />
-              </SelectPrimitive.ScrollDownButton>
+              {hasScroll && (
+                <SelectPrimitive.ScrollDownButton className="flex cursor-default items-center justify-center py-1">
+                  <ChevronDown className="size-4" />
+                </SelectPrimitive.ScrollDownButton>
+              )}
             </SelectPrimitive.Content>
           </SelectPrimitive.Portal>
         </SelectPrimitive.Root>

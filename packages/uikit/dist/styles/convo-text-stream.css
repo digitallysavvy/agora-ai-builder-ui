@@ -1,0 +1,63 @@
+/* Chat link styling */
+.chat-link {
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+  transition: opacity 0.2s ease;
+}
+
+.chat-link:hover {
+  opacity: 0.8;
+}
+
+/* Markdown heading styles */
+.heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.heading-sub {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* List item styles */
+.list-item {
+  display: block;
+  margin-left: 0.5rem;
+}
+
+.list-item-numbered {
+  display: block;
+  margin-left: 0.5rem;
+}
+
+.list-number {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.list-item-sub {
+  display: block;
+  margin-left: 1.5rem;
+}
+
+/* Chat pulse animation */
+@keyframes chat-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.animate-chat-pulse {
+  animation: chat-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

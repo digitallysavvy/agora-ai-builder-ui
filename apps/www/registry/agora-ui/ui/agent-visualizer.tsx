@@ -28,6 +28,20 @@ export interface AgentVisualizerProps
    * @default "md"
    */
   size?: AgentVisualizerSize
+
+  /**
+   * Base path for lottie files.
+   * @default "/agora-uikit/lottie"
+   * @example "https://cdn.example.com/lottie"
+   * @example "/custom-path/lottie"
+   */
+  lottieBasePath?: string
+
+  /**
+   * Custom paths for specific states. Overrides lottieBasePath for specified states.
+   * @example { "listening": "https://cdn.example.com/custom-listening.lottie" }
+   */
+  lottiePaths?: Partial<Record<AgentVisualizerState, string>>
 }
 
 const stateToLottieFile: Record<AgentVisualizerState, string> = {
@@ -71,42 +85,61 @@ const sizeClasses: Record<
 export const AgentVisualizer = React.forwardRef<
   HTMLDivElement,
   AgentVisualizerProps
->(({ state, size = "md", className, ...props }, ref) => {
-  const lottieFileName = stateToLottieFile[state]
-  const displayText = stateToText[state]
-  const sizeConfig = sizeClasses[size]
+>(
+  (
+    {
+      state,
+      size = "md",
+      lottieBasePath = "/agora-uikit/lottie",
+      lottiePaths,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    const lottieFileName = stateToLottieFile[state]
+    const displayText = stateToText[state]
+    const sizeConfig = sizeClasses[size]
 
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "flex flex-col items-center justify-center gap-4",
-        className
-      )}
-      {...props}
-    >
+    // Use custom path if provided, otherwise construct from base path
+    const lottieSrc =
+      lottiePaths?.[state] || `${lottieBasePath}/${lottieFileName}`
+
+    return (
       <div
-        className={cn("flex items-center justify-center", sizeConfig.container)}
+        ref={ref}
+        className={cn(
+          "flex flex-col items-center justify-center gap-4",
+          className
+        )}
+        {...props}
       >
-        <DotLottieReact
-          src={`/registry/agora-ui/lottie/${lottieFileName}`}
-          loop
-          autoplay
-          className="h-full w-full"
-        />
-      </div>
-      {displayText && (
-        <p
+        <div
           className={cn(
-            "text-foreground text-center font-medium",
-            sizeConfig.text
+            "flex items-center justify-center",
+            sizeConfig.container
           )}
         >
-          {displayText}
-        </p>
-      )}
-    </div>
-  )
-})
+          <DotLottieReact
+            src={lottieSrc}
+            loop
+            autoplay
+            className="h-full w-full"
+          />
+        </div>
+        {displayText && (
+          <p
+            className={cn(
+              "text-foreground text-center font-medium",
+              sizeConfig.text
+            )}
+          >
+            {displayText}
+          </p>
+        )}
+      </div>
+    )
+  }
+)
 
 AgentVisualizer.displayName = "AgentVisualizer"

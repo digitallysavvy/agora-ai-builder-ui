@@ -1,10 +1,5 @@
-import { HelloWorld } from "@/registry/agora-ui/ui/hello-world"
+import ComponentsPage from "@/app/components/page"
 
 export default function HomePage() {
-  return (
-    <main className="flex min-h-screen items-center justify-center p-8">
-      <HelloWorld />
-    </main>
-  )
+  return <ComponentsPage />
 }
-
