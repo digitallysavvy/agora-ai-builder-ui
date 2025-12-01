@@ -1,0 +1,160 @@
+name: ✨ Feature Request
+description: Suggest a new feature or enhancement
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in improving Agora AI Agent UIKit! Please describe the feature you'd like to see.
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Feature Type
+      description: What type of feature are you requesting?
+      options:
+        - New Component
+        - Component Enhancement
+        - New Hook
+        - New Utility
+        - Documentation
+        - Performance Improvement
+        - Developer Experience
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Related Component (if applicable)
+      description: Which component would this feature affect?
+      options:
+        - AgentVisualizer
+        - Avatar
+        - Button
+        - Card
+        - Chip
+        - Command
+        - Conversation
+        - DropdownMenu
+        - IconButton
+        - LiveWaveform
+        - Message
+        - MicButton
+        - MicSelector
+        - Popover
+        - Response
+        - ValuePicker
+        - Hooks
+        - Utilities
+        - Multiple Components
+        - N/A - New Component
+        - Other
+    validations:
+      required: false
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / Use Case
+      description: What problem does this feature solve? What is the use case?
+      placeholder: |
+        I'm building a voice AI application and I need...
+        Currently, I have to work around this by...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: How would you like this feature to work?
+      placeholder: |
+        Add a new prop called...
+        Create a new component that...
+    validations:
+      required: true
+
+  - type: textarea
+    id: api-design
+    attributes:
+      label: API Design (if applicable)
+      description: If you have ideas about the API, share them here
+      placeholder: |
+        ```tsx
+        <AgentVisualizer
+          state="listening"
+          customAnimation="path/to/animation.lottie"
+          onStateChange={(newState) => console.log(newState)}
+        />
+        ```
+      render: tsx
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: What other solutions or workarounds have you considered?
+      placeholder: |
+        - Using component X from library Y, but...
+        - Building a custom solution, but...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Critical - Blocking my project
+        - High - Would significantly improve my workflow
+        - Medium - Nice to have
+        - Low - Not urgent
+    validations:
+      required: false
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples from Other Libraries
+      description: Are there examples of this feature in other UI libraries?
+      placeholder: |
+        - Chakra UI has a similar component: [link]
+        - Material UI implements this as: [link]
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context, screenshots, or mockups about the feature request
+      placeholder: |
+        Attach mockups, designs, or examples here
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Would you like to contribute?
+      description: Are you interested in implementing this feature?
+      options:
+        - label: I'm willing to submit a PR to implement this feature
+          required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      description: Please confirm the following
+      options:
+        - label: I have searched existing issues to make sure this hasn't been requested before
+          required: true
+        - label: This feature aligns with the library's goals (AI agent UI components)
+          required: false

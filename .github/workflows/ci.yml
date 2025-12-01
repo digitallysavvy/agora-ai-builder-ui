@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Type check
+        run: pnpm --filter @agora/ai-agent-uikit typecheck
+
+      - name: Build package
+        run: pnpm --filter @agora/ai-agent-uikit build
+
+      - name: Build demo app
+        run: pnpm --filter www build
+        env:
+          NODE_ENV: production
+
+      - name: Check build outputs
+        run: |
+          ls -la packages/uikit/dist/
+          ls -la packages/uikit/dist/assets/lottie/
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint package
+        run: pnpm --filter @agora/ai-agent-uikit lint
+
+      - name: Lint demo app
+        run: pnpm --filter www lint
